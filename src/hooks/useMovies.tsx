@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 
 import movieDB from '../api/movieDB';
-import { MovieDBMoviesResponde, Movie } from '../interfaces/movieInterface';
+import { MovieDBResponse, Movie } from '../interfaces/movieInterface';
 
 
 //? MULTIPLE REQUEST AUTOMATICALLY
@@ -31,17 +31,17 @@ export const useMovies = () => {
         try {
             setIsLoading( true );
             
-            // const respNowPlayin = await movieDB.get<MovieDBMoviesResponde>('/now_playing');
-            // const respPopular = await movieDB.get<MovieDBMoviesResponde>('/popular');
+            // const respNowPlayin = await movieDB.get<MovieDBResponse>('/now_playing');
+            // const respPopular = await movieDB.get<MovieDBResponse>('/popular');
             
             // setMoviesInTheater( respNowPlayin.data.results );
             // setPopularMovies( respPopular.data.results );
 
 
-            const nowPlayingPromise = movieDB.get<MovieDBMoviesResponde>('/now_playing');
-            const popularPromise    = movieDB.get<MovieDBMoviesResponde>('/popular');
-            const topRatedPromise   = movieDB.get<MovieDBMoviesResponde>('/top_rated');
-            const upcomingPromise   = movieDB.get<MovieDBMoviesResponde>('/upcoming');
+            const nowPlayingPromise = movieDB.get<MovieDBResponse>('/now_playing');
+            const popularPromise    = movieDB.get<MovieDBResponse>('/popular');
+            const topRatedPromise   = movieDB.get<MovieDBResponse>('/top_rated');
+            const upcomingPromise   = movieDB.get<MovieDBResponse>('/upcoming');
 
             const responses = await Promise.all([
                 nowPlayingPromise,
